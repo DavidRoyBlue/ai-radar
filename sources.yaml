@@ -1,0 +1,124 @@
+# ai-radar sources
+# Edit freely. Each top-level key is a source-type handler defined in CLAUDE.md.
+# Set `enabled: false` to skip a source without deleting it.
+
+github_search:
+  - name: claude-code-keyword
+    query: "claude-code in:name,description,readme"
+    sort: stars
+    order: desc
+    cap: 30
+  - name: claude-skill-topic
+    query: "topic:claude-skill"
+    sort: stars
+    order: desc
+    cap: 30
+  - name: claude-plugin-topic
+    query: "topic:claude-plugin"
+    sort: stars
+    order: desc
+    cap: 30
+  - name: mcp-server-topic
+    query: "topic:mcp-server"
+    sort: stars
+    order: desc
+    cap: 50
+  - name: mcp-keyword-recent
+    query: "model context protocol in:name,description,readme created:>2026-02-01"
+    sort: stars
+    cap: 30
+  - name: agent-framework-recent
+    query: "agent framework in:name,description created:>2026-02-01 stars:>20"
+    sort: stars
+    cap: 30
+  - name: ai-coding-assistant-recent
+    query: "ai coding agent in:name,description created:>2026-02-01 stars:>20"
+    sort: stars
+    cap: 30
+  - name: subagent
+    query: "subagent OR sub-agent in:name,description,readme"
+    sort: stars
+    cap: 20
+
+github_releases:
+  - anthropics/claude-code
+  - anthropics/anthropic-cookbook
+  - anthropics/claude-agent-sdk-python
+  - anthropics/claude-agent-sdk-typescript
+  - anthropics/skills
+  - modelcontextprotocol/specification
+  - modelcontextprotocol/servers
+  - modelcontextprotocol/python-sdk
+  - modelcontextprotocol/typescript-sdk
+  - aider-AI/aider
+  - All-Hands-AI/OpenHands
+  - princeton-nlp/SWE-agent
+  - langchain-ai/langgraph
+  - crewAIInc/crewAI
+  - microsoft/autogen
+  - openai/swarm
+
+github_trending:
+  - languages: [python, typescript, javascript, rust, go]
+    since: daily
+    keywords_filter:
+      - claude
+      - agent
+      - mcp
+      - llm
+      - ai
+      - coding
+      - autonomous
+
+awesome_list:
+  - hesreallyhim/awesome-claude-code
+  - hesreallyhim/awesome-claude-code-agents
+  - punkpeye/awesome-mcp-servers
+  - wong2/awesome-mcp-servers
+  - e2b-dev/awesome-ai-agents
+
+rss:
+  - name: anthropic-news
+    url: https://www.anthropic.com/news/rss.xml
+  - name: anthropic-engineering
+    url: https://www.anthropic.com/engineering/rss.xml
+  - name: simon-willison
+    url: https://simonwillison.net/atom/everything/
+  - name: latent-space
+    url: https://www.latent.space/feed
+  - name: openai-blog
+    url: https://openai.com/blog/rss.xml
+  - name: google-research
+    url: http://research.google/blog/rss/
+  - name: hf-daily-papers
+    url: https://huggingface.co/papers/rss
+  - name: arxiv-cs-ai
+    url: http://export.arxiv.org/api/query?search_query=cat:cs.AI+AND+(abs:agent+OR+abs:%22tool+use%22+OR+abs:%22code+agent%22+OR+abs:MCP)&sortBy=submittedDate&sortOrder=descending&max_results=30
+
+hn:
+  - query: "claude code"
+    since_days: 1
+  - query: "MCP"
+    since_days: 1
+  - query: "claude skill"
+    since_days: 3
+  - query: "ai agent"
+    since_days: 1
+    min_points: 50
+
+reddit:
+  - sub: ClaudeAI
+    sort: new
+  - sub: LocalLLaMA
+    sort: hot
+  - sub: mcp
+    sort: new
+
+exa_twitter:
+  # Each query consumes one search; budget capped at 5/day in CLAUDE.md
+  queries:
+    - "(claude code OR claude skill OR claude plugin) site:x.com OR site:twitter.com"
+    - "(MCP server OR model context protocol) site:x.com OR site:twitter.com"
+    - "(subagent OR sub-agent OR agent framework) site:x.com OR site:twitter.com"
+    - "(autonomous coding OR AI coding agent) site:x.com OR site:twitter.com"
+  freshness_days: 7
